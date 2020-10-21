@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>URL Shortener Service</title>
+</head>
+<body>
+
+<div>
+    <h1>URL Shortener Service</h1>
+    <h6>by Vitalii Chernetskyi</h6>
+    <br>
+    <p>Instruction:</p>
+    <ul>
+        <li>To short URL write: /makeshort/URL</li>
+        <li>To use shorted URL simpy write: /SHORTEDURL</li>
+        <li>To see all stored URLs write: /showall</li>
+    </ul>
+    <br>
+    <div th:switch="${message}">
+        <p th:case="true">Action was successful!</p>
+        <p th:case="false">Action was NOT successful!</p>
+    </div>
+    <p th:if="${message} == true"></p>
+    <p th:if="${shortUrl}">Shortened URL: <p th:text="${shortUrl}"></p></p>
+    <table th:if="${allUrlsList}">
+        <tr th:each="data : ${allUrlsList}">
+            <td th:text="${data.requestID}"></td>
+            <td th:text="${data.longURL}"></td>
+            <td th:text="${data.shortURL}"></td>
+        </tr>
+    </table>
+
+
+</div>
+
+</body>
+</html>
